@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Site moved to Jekyll
+title: 
 ---
 
 This site now runs on [Jekyll](http://jekyllrb.com/), an easy-to-use static page
