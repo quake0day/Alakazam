@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0033)http://www.anyware.co.nz/maptest/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Map test</title>
+    <script src="./Map test_files/maps" type="text/javascript"></script><style type="text/css"></style><script src="./Map test_files/main.js" type="text/javascript"></script><style type="text/css">@media print{.gmnoprint{display:none}}@media screen{.gmnoscreen{display:none}}</style>
+    <script type="text/javascript">
+
+    //<![CDATA[
+
+// Bus locations
+var data = [
+ { lat:-41.218194, lng:174.832478 },
+ { lat:-41.217678, lng:174.832596 },
+ { lat:-41.217177, lng:174.832939 },
+ { lat:-41.216669, lng:174.832209 },
+ { lat:-41.215636, lng:174.831887 },
+ { lat:-41.214667, lng:174.832124 },
+ { lat:-41.214094, lng:174.831930 },
+ { lat:-41.214490, lng:174.830793 },
+ { lat:-41.215023, lng:174.829999 },
+ { lat:-41.215813, lng:174.829978 },
+ { lat:-41.216709, lng:174.829956 },
+ { lat:-41.217629, lng:174.830589 },
+ { lat:-41.218057, lng:174.831372 }
+];
+
+var map = null;
+var route = null;
+var busMarker = null;
+var point = null;
+var count = 0;
+var delay = 2000;
+var loops = 5;
+
+function load() {
+  if (GBrowserIsCompatible()) {
+  map = new GMap2(document.getElementById("map"));
+    map.setCenter(new GLatLng(-41.217573, 174.831952), 15);
+
+  addBusStops();
+
+  var point = new GLatLng(data[count].lat, data[count].lng);
+  busMarker = new GMarker(point);
+  map.addOverlay(busMarker);
+//GLog.write("load " + busMarker.GetLatLng);
+
+  route = setTimeout("moveTheBus()", 4000);
+  }
+ }
+
+function addBusStops() {
+  var polyline = new GPolyline([
+    new GLatLng(-41.217952, 174.831394),
+    new GLatLng(-41.217942, 174.831383),
+  ], "#ff0000", 5);
+  map.addOverlay(polyline);
+  var polyline = new GPolyline([
+    new GLatLng(-41.218436, 174.832520),
+    new GLatLng(-41.218416, 174.832500),
+  ], "#ff0000", 5);
+  map.addOverlay(polyline);
+  var polyline = new GPolyline([
+    new GLatLng(-41.215878, 174.830064),
+    new GLatLng(-41.215868, 174.830054),
+  ], "#ff0000", 5);
+  map.addOverlay(polyline);
+  var polyline = new GPolyline([
+    new GLatLng(-41.214780, 174.830600),
+    new GLatLng(-41.214770, 174.830610),
+  ], "#ff0000", 5);
+  map.addOverlay(polyline);
+  var polyline = new GPolyline([
+  new GLatLng(-41.215991, 174.832016),
+  new GLatLng(-41.215971, 174.832036),
+  ], "#ff0000", 5);
+  map.addOverlay(polyline);
+ }
+ 
+ function moveTheBus() {
+  count++;
+  if(count > data.length - 1) {
+	count = 0;
+	loops--;
+  }
+
+//GLog.write("move the marker to " + data[count].lat + ", " + data[count].lng);
+//GLog.write("busMarker before move = " + busMarker.getLatLng());
+  point = new GLatLng(data[count].lat, data[count].lng);
+  busMarker.setLatLng(point); 
+//GLog.write("busMarker after move = " + busMarker.getLatLng());
+
+  if (loops > 0)
+  {
+	route = setTimeout("moveTheBus()", delay);
+  }
+}	
+		
+	//]]>
+    </script>
+  <script type="text/javascript" charset="UTF-8" src="./Map test_files/{mod_drag,mod_ctrapi,mod_poly}.js"></script><style>@-moz-keyframes nodeInserted{from{opacity:0.99;}to{opacity:1;}}@-webkit-keyframes nodeInserted{from{opacity:0.99;}to{opacity:1;}}@-o-keyframes nodeInserted{from{opacity:0.99;}to{opacity:1;}}@keyframes nodeInserted{from{opacity:0.99;}to{opacity:1;}}embed,object{animation-duration:.001s;-ms-animation-duration:.001s;-moz-animation-duration:.001s;-webkit-animation-duration:.001s;-o-animation-duration:.001s;animation-name:nodeInserted;-ms-animation-name:nodeInserted;-moz-animation-name:nodeInserted;-webkit-animation-name:nodeInserted;-o-animation-name:nodeInserted;}</style><script>window["_GOOG_TRANS_EXT_VER"] = "1";</script></head>
+  <body onload="load()" onunload="GUnload()">
+    <div id="map" style="width: 500px; height: 300px; position: relative; background-color: rgb(229, 227, 223);"><div style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0; cursor: url(http://maps.gstatic.com/intl/en_us/mapfiles/openhand_8_8.cur) 8 8, default;"><div style="position: absolute; left: 0px; top: 0px; display: none;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><img style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/transparent.png"><img style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/transparent.png"><img style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/transparent.png"><img style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/transparent.png"><img style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/transparent.png"><img style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/transparent.png"><img style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/transparent.png"><img style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/transparent.png"><img style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/transparent.png"><img style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/transparent.png"><img style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/transparent.png"><img style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/transparent.png"></div></div><div style="position: absolute; left: 0px; top: 0px;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><img style="position: absolute; left: -158px; top: -287px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/lyrs=m@209000000&hl=en&src=api&x=32296&s=&y=20507&z=15&s=Gal"><img style="position: absolute; left: -158px; top: -31px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/lyrs=m@209000000&hl=en&src=api&x=32296&s=&y=20508&z=15&s=Gali"><img style="position: absolute; left: -158px; top: 225px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/lyrs=m@209000000&hl=en&src=api&x=32296&s=&y=20509&z=15&s=Galil"><img style="position: absolute; left: 98px; top: -287px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/lyrs=m@209000000&hl=en&src=api&x=32297&s=&y=20507&z=15&s=Galile"><img style="position: absolute; left: 98px; top: -31px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/lyrs=m@209000000&hl=en&src=api&x=32297&s=&y=20508&z=15&s=Galileo"><img style="position: absolute; left: 98px; top: 225px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/lyrs=m@209000000&hl=en&src=api&x=32297&s=&y=20509&z=15&s="><img style="position: absolute; left: 354px; top: -287px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/lyrs=m@209000000&hl=en&src=api&x=32298&s=&y=20507&z=15&s=G"><img style="position: absolute; left: 354px; top: -31px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/lyrs=m@209000000&hl=en&src=api&x=32298&s=&y=20508&z=15&s=Ga"><img style="position: absolute; left: 354px; top: 225px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/lyrs=m@209000000&hl=en&src=api&x=32298&s=&y=20509&z=15&s=Gal"><img style="position: absolute; left: 610px; top: -287px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/lyrs=m@209000000&hl=en&src=api&x=32299&s=&y=20507&z=15&s=Gali"><img style="position: absolute; left: 610px; top: -31px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/lyrs=m@209000000&hl=en&src=api&x=32299&s=&y=20508&z=15&s=Galil"><img style="position: absolute; left: 610px; top: 225px; width: 256px; height: 256px; border: 0px; padding: 0px; margin: 0px;" src="./Map test_files/lyrs=m@209000000&hl=en&src=api&x=32299&s=&y=20509&z=15&s=Galile"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 100;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 101;"><canvas style="position: absolute; left: 231px; top: 157px; z-index: 1000;" width="11px" height="10px"></canvas><canvas style="position: absolute; left: 258px; top: 171px; z-index: 1000;" width="10px" height="11px"></canvas><canvas style="position: absolute; left: 201px; top: 92px; z-index: 1000;" width="10px" height="11px"></canvas><canvas style="position: absolute; left: 213px; top: 58px; z-index: 1000;" width="10px" height="11px"></canvas><canvas style="position: absolute; left: 246px; top: 96px; z-index: 1000;" width="11px" height="10px"></canvas></div><div style="position: absolute; left: 0px; top: 0px; z-index: 102;"><img style="position: absolute; left: 253px; top: 135px; width: 37px; height: 34px; border: 0px; padding: 0px; margin: 0px; z-index: 131898208;" src="./Map test_files/shadow50.png" class="gmnoprint"><img style="position: absolute; left: 253px; top: 135px; width: 37px; height: 34px; border: 0px; padding: 0px; margin: 0px; z-index: 131898208;" src="./Map test_files/dithshadow.gif" class="gmnoscreen"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 103;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 104; cursor: default;"><img style="width: 20px; height: 34px; border: 0px; padding: 0px; margin: 0px; position: absolute; left: 253px; top: 135px; z-index: 131898208;" src="./Map test_files/marker.png"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 105;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 106;"><img style="position: absolute; left: 253px; top: 135px; width: 20px; height: 34px; border: 0px; padding: 0px; margin: 0px; z-index: 131898208; cursor: pointer;" src="./Map test_files/markerTransparent.png" class="gmnoprint" id="mtgt_unnamed_0"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 107; cursor: default;"></div></div></div><div class="gmnoprint" style="z-index: 0; position: absolute; left: 2px; bottom: 2px;"><a title="Click to see this area on Google Maps" target="_blank" href="http://maps.google.com/maps?ll=-41.217573,174.831952&spn=0.009684,0.021458&z=15&key=ABQIAAAAv4Q1uOL3I9E3TMXuNfqmXBRRw9x0kUfjFXPT2tErDgxsEiV9kBTnoBxFJsfq0eepyG_GRzWVf7HqTg&mapclient=jsapi&oi=map_misc&ct=api_logo"><img style="width: 62px; height: 30px; border: 0px; padding: 0px; margin: 0px; cursor: pointer;" src="./Map test_files/poweredby.png"></a></div><div style="z-index: 0; position: absolute; right: 3px; bottom: 2px; color: black; font-family: Arial, sans-serif; font-size: 11px; white-space: nowrap; text-align: right;" dir="ltr"><span>Map data ©2013  Google, MapData Sciences Pty Ltd, PSMA - </span><a href="http://www.google.com/intl/en_us/help/terms_maps.html" target="_blank" class="gmnoprint terms-of-use-link" style="color: rgb(119, 119, 204);">Terms of Use</a></div></div>
+  
+</body></html>
