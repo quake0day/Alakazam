@@ -13,10 +13,9 @@ The difference between existing approach and our approach is that we want to use
 
 
 ##References
----
-[1] Azizyan, Martin and Constandache, Ionut and Roy Choudhury, Romit, ”SurroundSense: mobile phone localization via ambience fingerprinting,” MobiCom ’09, 2009.
-[2] Wang, He and Sen, Souvik and Elgohary, Ahmed and Farid, Moustafa and Youssef, Moustafa and Choudhury, Romit Roy, ”No need to war-drive: unsupervised indoor lo- calization,” MobiSys ’12, 2012.
-[3] Yang, Zheng and Wu, Chenshu and Liu, Yunhao, ”Locating in fingerprint space: wireless indoor localization with little human intervention,” MobiCom’12, 2012.
+[1] Azizyan, Martin and Constandache, Ionut and Roy Choudhury, Romit, ”SurroundSense: mobile phone localization via ambience fingerprinting,” MobiCom ’09, 2009.  
+[2] Wang, He and Sen, Souvik and Elgohary, Ahmed and Farid, Moustafa and Youssef, Moustafa and Choudhury, Romit Roy, ”No need to war-drive: unsupervised indoor lo- calization,” MobiSys ’12, 2012.  
+[3] Yang, Zheng and Wu, Chenshu and Liu, Yunhao, ”Locating in fingerprint space: wireless indoor localization with little human intervention,” MobiCom’12, 2012.  
 
 
 {% for post in site.posts %}
