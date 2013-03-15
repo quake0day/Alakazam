@@ -3,68 +3,28 @@ layout: default
 title: Documentation
 ---
 
-## Documentation
+# Documentation
 
-### User guide
+## Project Plan
 
-<a class="download" href="GLFWUsersGuide277.pdf" title="Download User Guide (PDF)">Download</a>
+### Time table & Schedule
 
-The user guide is a task-oriented guide to the API.  It does not describe every
-detail of GLFW, but instead attempts to get you started in the areas of your
-interest.
+Date         | Mission
+------------ | ------------
+Before March | Set up github page (blog), set up basic development environment (Eclipse, Linux server)
+Mar.1 - Mar.15 | Develop android app to collect smartphone sensor data (Wifi, gps, compass,gyroscope). For server side, provide API and pro- tocol to save and transmit those data
+Mar.16 - Mar.31 | Let the android app provide more accurate sensor data (filter out noise).UI design and develop. For server side, process those sensor data and clustering it (on sensor features and locations)
+Apr.1 - Apr.30 | Using clustering information and decision tree to detecting seed landmarks and form a new organic landmarks. Send back infor- mation to user side and display. Do experiment on how accurate (meter) this system can provide. Do experiment to see whether this system can self-evolved and achieved a better result after running few weeks.
 
----
-### Reference manual
 
-<a class="download" href="GLFWReference277.pdf" title="Download Reference Manual (PDF)">Download</a>
+###Milestones
+1.  Programming Android phones to obtain all the sensor data (without consider the energy cost) and send to a server with timestamp.
+2.  Server abstract the sensor features and cluster it.
+3. Server map those cluster on sensor features to locations of cluster members.
+4. Server form a new organic landmarks (you can think it as an automatically generated location anchor) by using those info.
+5. Server using decision tree for detecting seed landmarks (you can think it as an user tagged anchor).
 
-The reference manual describes every function and constant of the API, but isn't
-necessarily the best way to get started using GLFW.
 
----
-### Example code
+## Demo
 
-This short example shows how the GLFW API looks and how easy it is to create and
-a window and OpenGL context with it.  There are many more functions than those
-used here, but these are all you need to get started.
-
-{% highlight c %}
-#include <GL/glfw.h>
-
-int main(void)
-{
-    /* Initialize the library */
-    if (!glfwInit())
-        return -1;
-
-    /* Create a windowed mode window and its OpenGL context */
-    if (!glfwOpenWindow(640, 480, 8, 8, 8, 0, 24, 0, GLFW_WINDOW))
-        return -1;
-
-    /* Loop until the user closes the window */
-    while (glfwGetWindowParam(GLFW_OPENED))
-    {
-        /* Render here */
-
-        /* Swap front and back buffers and process events */
-        glfwSwapBuffers();
-    }
-
-    return 0;
-}
-{% endhighlight %}
-
-To learn about these and all other GLFW functions, see the user guide and
-reference manual.
-
----
-### Wiki
-
-GLFW has a wiki at [wiki.glfw.org](http://wiki.glfw.org/).
-
----
-### Patch submitters guide
-
-The [patch submitters guide](patchguide.html) describes best practices for
-creating and submitting patches to GLFW.  It is recommended reading for anyone
-who wishes to contribute to the project.
+In the end of this semester we will perform our demo by showing an app running on an android phone which can show whose office or lab the user is approaching (Dr.Demirbas - Room 313, Dr.Regan - Room 326, Dr. Selman - Room 349, PhoneLab etc..). We assume we have the floor plan in advance, but the location fingerprint is formed by our algorithm not manually added.

@@ -19,3 +19,6 @@ This contains:
 - Project files for Eclipse
 - Webpy server code
 
+### Project Proposal
+
+<a class="download" href="./plan.pdf" title="Download Source (ZIP)">Download</a>

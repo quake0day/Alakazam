@@ -1,31 +1,15 @@
 ---
 layout: default
-title: An OpenGL library
+title: A solution of indoor localization
 ---
 
 ## Welcome
 
-**GLFW** is a free, Open Source, multi-platform library for opening a window,
-creating an OpenGL context and managing input.  It is easy to integrate into
-existing applications and does not lay claim to the main loop.
+Our project aims at providing a solution of **indoor localization**. We’ve already searched several papers related to indoor localization by using smart phone ([1],[2],[3]). [1] is a good starting point and we aim our goal to have accuracy within 2 meters, utilizing all kinds of built-in sen- sors in current mobile devices, such as GPS, gyroscope, compass, wireless module, etc. In the online-version proposal, you mention that “as part of the PhoneLab project, we have made significant improvements over Android baseline proximity service to make it energy-efficient, easier to use, and precise.” The difference between existing approach and our approach is that we want to use the method described in [2] paper to form a unsupervised indoor localiza- tion scheme by pass the need for human interaction (without using the localization tag but localization tag may help us to recognize the place).
 
-GLFW is written in C and has native support for Windows, Mac OS X and many
-Unix-like systems using the X Window System, such as Linux and FreeBSD.
-
-GLFW is licensed under the [zlib/libpng license](license.html).
-
-### Features
-- Easy to use API in the style of the OpenGL APIs
-- Gives you a window and OpenGL context with two function calls
-- Explicit support for MSAA and OpenGL 3.2+, including profiles and flags
-- Input can be either polled or delivered via callbacks
-- Basic Unicode character input
-- Supports both static and dynamic linking
-- Open Source with a liberal OSI-certified [license](license.html)
-- Makefiles or project files for most popular C/C++ compilers
-- Examples and comprehensive [documentation](documentation.html)
-
-If GLFW isn't what you are looking for, there are [alternatives](links.html#alternatives_to_glfw).
+##References[1] Azizyan, Martin and Constandache, Ionut and Roy Choudhury, Romit, ”SurroundSense: mobile phone localization via ambience fingerprinting,” MobiCom ’09, 2009.
+[2] Wang, He and Sen, Souvik and Elgohary, Ahmed and Farid, Moustafa and Youssef, Moustafa and Choudhury, Romit Roy, ”No need to war-drive: unsupervised indoor lo- calization,” MobiSys ’12, 2012.
+[3] Yang, Zheng and Wu, Chenshu and Liu, Yunhao, ”Locating in fingerprint space: wireless indoor localization with little human intervention,” MobiCom’12, 2012.
 
 {% for post in site.posts %}
 ---
@@ -42,5 +26,5 @@ If GLFW isn't what you are looking for, there are [alternatives](links.html#alte
 {% endfor %}
 
 If you find any bugs, please help us by reporting them in our
-[bug tracker](http://sourceforge.net/tracker/?group_id=72569).
-If you encounter any problems using GLFW, please [contact us](community.html).
+[bug tracker](https://github.com/quake0day/Alakazam/issues/new).
+If you encounter any problems using Alkazam, please [contact us](<schen23@buffalo.edu>).
