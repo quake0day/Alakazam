@@ -5,7 +5,10 @@ title: Download
 
 ## Download
 
-Our project are host on github.com, you can checkout our code through ([Alakazam](https://github.com/quake0day/Alakazam))
+
+Our project are host on github.com, you can checkout project code through ([Alakazam](https://github.com/quake0day/Alakazam))
+
+
 ---
 ### Source archive
 

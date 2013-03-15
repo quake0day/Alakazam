@@ -9,7 +9,7 @@ This page attempts to address some of the most commonly asked questions that we
 have received from Alakazam users.
 
 If your questions are not answered here, please do
-[contact us](schen23@buffalo.edu).
+[contact us](<schen23@buffalo.edu>).
 
 ---
 ## Table of Contents
