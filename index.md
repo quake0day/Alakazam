@@ -22,6 +22,7 @@ title: A solution of indoor localization
 
 ---
 ##About Alakazam
+![Mou icon](http://1.bp.blogspot.com/-wzPeXvb4HUM/TeAVqYPixHI/AAAAAAAAApk/UoOI9h1sWtM/s1600/KadabraTr.png)
 Our project aims at providing a solution of **indoor localization**. We’ve already searched several papers related to indoor localization by using smart phone ([1],[2],[3]). 
 
 [1] is a good starting point and we aim our goal to have accuracy within 2 meters, utilizing all kinds of built-in sen- sors in current mobile devices, such as GPS, gyroscope, compass, wireless module, etc. In the online-version proposal, you mention that “as part of the PhoneLab project, we have made significant improvements over Android baseline proximity service to make it energy-efficient, easier to use, and precise.” 
