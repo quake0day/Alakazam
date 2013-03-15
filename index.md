@@ -29,7 +29,7 @@ If GLFW isn't what you are looking for, there are [alternatives](links.html#alte
 
 {% for post in site.posts %}
 ---
-<a href="/Alakazam/{{ post.url }}">
+<a href="/Alakazam{{ post.url }}">
 <h3>{{ post.title }}</h3>
 <span class="date">
 <div class="dateday">{{ post.date | date: "%e" }}</div>
