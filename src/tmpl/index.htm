@@ -16,30 +16,25 @@
   var overlay ;
   var count = 0;
   var delay = 2000;
-  var loops = 9999;
+  var loops = 999999;
   var marker = null;
-// user loc data
-  var data = [
-//{ lat:43.00284389109307, lng:-78.78759238481518},
-{ lat:43.00283408332881, lng:-78.7872705197334},
-//{ lat:43.0028772374798, lng:-78.78690305709836}
-  ];
   
-
+// user loc data retrived from MongoDB see jQuery part
+  var data = [];
   
-
   function initialize() {
   		  
-    var myLatlng = new google.maps.LatLng(43.00233241,-78.78778282);
+	var center = new google.maps.LatLng(43.002785534871606,-78.78736976146706);
+	
     var myOptions = {
       key: 'AIzaSyA5rIPRrzlI8xgWMcA1dV92_Tn_iyT04ps',
-      zoom: 19,
+      zoom: 20,
 	  mapTypeControl: false,
 	  streetViewControl: false,
 	  panControl: false,
 	  zoomControl: false,
 	  // Tell the map to center on the user's location
-      center: myLatlng,
+      center: center,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       sensor: 'true'
     }
@@ -59,13 +54,15 @@
 	   //set the location for Davis 3rd floor plan
     var sw = new google.maps.LatLng(43.00233241,-78.78778282) ;
     var ne = new google.maps.LatLng(43.00301455,-78.78674615) ;
+	var init = new google.maps.LatLng(43.002785534871606,-78.78736976146706);
+	
     var bounds = new google.maps.LatLngBounds(sw,ne) ;
 	// add overlay --> Davis 3rd floor plan pic
     overlay = new ProjectedOverlay(map,'static/new_cut.png', bounds, {}) ;
     document.getElementById("overlayToggle").innerHTML =  '<a href="javascript:overlayRemove()">Remove Overlay</a>' ;
 	
 	marker = new google.maps.Marker({
-	      position: sw,
+	      position: init,
 	      map: map,
 	      title:"Here"
 	  });
@@ -144,15 +141,17 @@ $$(document).ready(function(){
 <!--jQuery Ends-->
 
 </head>
-<body style="margin:0px; padding:0px;" onload="initialize()">
-  <div id="map_canvas" style="width:80%; height:50%"></div>
+<body style="margin:10px; padding:10px;" onload="initialize()">
+  <div id="map_canvas" style="width:60%; height:90%"></div>
   Opacity: 
   <a href="javascript:overlay.setOpacity(25)">25%</a> &nbsp; 
   <a href="javascript:overlay.setOpacity(50)">50%</a> &nbsp; 
   <a href="javascript:overlay.setOpacity(100)">100%</a> &nbsp;
+  <!--
   <p>If you click on me, I will disappear.</p>
   <p>Click me away!</p>
   <p>Click me too!</p>
+-->
   <p>The current Location <span id="newLocation">x</span></p>
   <span id="overlayToggle"></span>
 </body>
