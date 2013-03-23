@@ -8,7 +8,8 @@ urls=(
 
 class index:
     def GET(self):
-        return "HELLO"
+        tmpl = web.template.render("tmpl/")
+        return tmpl.index()
 
     def POST(self):
         data = web.data()
@@ -19,7 +20,7 @@ class index:
 class loc:
     def GET(self):
         db = query.init_Mongo()
-        return query.query_post(db)
+        return query.query_one_loc(db)
 
     def POST(self):
         return "This post:)"

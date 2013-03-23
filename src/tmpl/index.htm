@@ -7,8 +7,8 @@
 <script type="text/javascript"
     src="https://maps.google.com/maps/api/js?sensor=true">
 </script>
-<script type="text/javascript" src="js/ProjectedOverlay.js"></script>
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="static/js/ProjectedOverlay.js"></script>
+<script type="text/javascript" src="static/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
 
 // valiables
@@ -20,9 +20,9 @@
   var marker = null;
 // user loc data
   var data = [
-{ lat:43.00284389109307, lng:-78.78759238481518},
+//{ lat:43.00284389109307, lng:-78.78759238481518},
 { lat:43.00283408332881, lng:-78.7872705197334},
-{ lat:43.0028772374798, lng:-78.78690305709836}
+//{ lat:43.0028772374798, lng:-78.78690305709836}
   ];
   
 
@@ -61,7 +61,7 @@
     var ne = new google.maps.LatLng(43.00301455,-78.78674615) ;
     var bounds = new google.maps.LatLngBounds(sw,ne) ;
 	// add overlay --> Davis 3rd floor plan pic
-    overlay = new ProjectedOverlay(map,'new_cut.png', bounds, {}) ;
+    overlay = new ProjectedOverlay(map,'static/new_cut.png', bounds, {}) ;
     document.getElementById("overlayToggle").innerHTML =  '<a href="javascript:overlayRemove()">Remove Overlay</a>' ;
 	
 	marker = new google.maps.Marker({
@@ -95,7 +95,6 @@
 	
    	// Each time a new location is registered, move the marker.
    	//myLocation = new google.maps.LatLng(newPosition.coords.latitude,newPosition.coords.longitude);
-	//alert(newPosition);
 	
     marker.setPosition(newPosition);
     if (loops > 0)
@@ -122,18 +121,22 @@
 
 <!--jQuery Begin-->
 <script>
-$(document).ready(function(){
-  $("p").click(function(){
-    $(this).hide();
+$$(document).ready(function(){
+  $$("p").click(function(){
+    $$(this).hide();
   });
   
   setInterval(function(){
-	  $.get('/loc',function(newLocation){
-		  alert("HIHI");
-		  alert(newLocation);
-		  $('#newLocation').html(newLocation);
+	  $$.get('/loc',function(newLocation){
+		  $$('#newLocation').html(newLocation);
+		  loc = newLocation.split(",");
+		  // a little hack here :(
+		  // To delte the "(" from the result
+		  data = [{lat:loc[0].split("(")[1],lng:loc[1]}];
+		  //data = newLocation;
+		  
 	  });
-  },1000);
+  },2000);
   
   
 });
