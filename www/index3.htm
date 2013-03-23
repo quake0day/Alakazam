@@ -1,0 +1,165 @@
+
+<html>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<head>
+<title>UB Davis 3rd floor -- CSE 646</title>
+<script type="text/javascript"
+    src="https://maps.google.com/maps/api/js?sensor=true">
+</script>
+<script type="text/javascript" src="js/ProjectedOverlay.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+
+// valiables
+  var map;
+  var overlay ;
+  var count = 0;
+  var delay = 2000;
+  var loops = 9999;
+  var marker = null;
+// user loc data
+  var data = [
+{ lat:43.00284389109307, lng:-78.78759238481518},
+{ lat:43.00283408332881, lng:-78.7872705197334},
+{ lat:43.0028772374798, lng:-78.78690305709836}
+  ];
+  
+
+  
+
+  function initialize() {
+  		  
+    var myLatlng = new google.maps.LatLng(43.00233241,-78.78778282);
+    var myOptions = {
+      key: 'AIzaSyA5rIPRrzlI8xgWMcA1dV92_Tn_iyT04ps',
+      zoom: 19,
+	  mapTypeControl: false,
+	  streetViewControl: false,
+	  panControl: false,
+	  zoomControl: false,
+	  // Tell the map to center on the user's location
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      sensor: 'true'
+    }
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+	
+   overlayAdd() ;
+  }
+  
+
+
+
+// Add the overlay
+
+   function overlayAdd()
+   {
+	   //set the location for Davis 3rd floor plan
+    var sw = new google.maps.LatLng(43.00233241,-78.78778282) ;
+    var ne = new google.maps.LatLng(43.00301455,-78.78674615) ;
+    var bounds = new google.maps.LatLngBounds(sw,ne) ;
+	// add overlay --> Davis 3rd floor plan pic
+    overlay = new ProjectedOverlay(map,'new_cut.png', bounds, {}) ;
+    document.getElementById("overlayToggle").innerHTML =  '<a href="javascript:overlayRemove()">Remove Overlay</a>' ;
+	
+	marker = new google.maps.Marker({
+	      position: sw,
+	      map: map,
+	      title:"Here"
+	  });
+	  // Bounce the marker on the map
+	marker.setAnimation(google.maps.Animation.BOUNCE);
+	// Make the marker information pop-up
+	var infowindowYou = new google.maps.InfoWindow({
+		content: 'You are here'
+	});
+	// Listen for the user's click on the marker to show the pop-up
+	google.maps.event.addListener(marker, 'click', function() {
+		infowindowYou.open(map,marker);
+	});
+	
+	route = setTimeout("movemarker()",4000);
+   }
+
+   function movemarker() {
+	   //alert("HIHI");
+	   count++;
+	   if(count > data.length - 1) {
+	 	count = 0;
+	 	loops--;
+	   }
+	   
+	var newPosition = new google.maps.LatLng(data[count].lat,data[count].lng);
+	
+   	// Each time a new location is registered, move the marker.
+   	//myLocation = new google.maps.LatLng(newPosition.coords.latitude,newPosition.coords.longitude);
+	//alert(newPosition);
+	
+    marker.setPosition(newPosition);
+    if (loops > 0)
+    {
+  	route = setTimeout("movemarker()", delay);
+    }
+ }
+  
+// Remove the overlay
+
+  function overlayRemove()
+  {
+   if ( !overlay )
+   {
+    return ;
+   }
+   overlay.remove() ;
+   overlay = null ;
+   document.getElementById("overlayToggle").innerHTML =  '<a href="javascript:overlayAdd()">Add Overlay</a>' ;
+  }
+  
+
+</script>
+
+<!--jQuery Begin-->
+<script>
+$(document).ready(function(){
+  $("p").click(function(){
+    $(this).hide();
+  });
+  
+  $.get('http://localhost:8080/loc',function(newLocation){
+	  alert("HIHI");
+	  alert(newLocation);
+	  $('#newLocation').html(newLocation);
+  });
+  
+  
+  setInterval(function(){
+	  $.get('http://localhost:8080/loc',function(newLocation){
+		  alert("HIHI");
+		  alert(newLocation);
+		  $('#newLocation').html(newLocation);
+	  });
+  },1000);
+  
+  
+});
+</script>
+<!--jQuery Ends-->
+
+</head>
+<body style="margin:0px; padding:0px;" onload="initialize()">
+  <div id="map_canvas" style="width:80%; height:50%"></div>
+  Opacity: 
+  <a href="javascript:overlay.setOpacity(25)">25%</a> &nbsp; 
+  <a href="javascript:overlay.setOpacity(50)">50%</a> &nbsp; 
+  <a href="javascript:overlay.setOpacity(100)">100%</a> &nbsp;
+  <p>If you click on me, I will disappear.</p>
+  <p>Click me away!</p>
+  <p>Click me too!</p>
+  <p>The current Location <span id="newLocation">x</span></p>
+  <span id="overlayToggle"></span>
+</body>
+
+</html>
+
