@@ -1,3 +1,18 @@
+import pymongo
+import datetime
+from pymongo import MongoClient
+
+
+def init_Mongo():
+    client = MongoClient()
+    db = client.test_database
+    collection = db.test_collection
+    #posts = db.posts
+    return db
+    
+db = init_Mongo()
+posts = db.posts
+
 # insert new data
 post1 = {"Name":"piers","lat":"43.00283408332881","lng":"-78.7872705197334","date":datetime.datetime.utcnow()}
 
