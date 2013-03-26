@@ -4,6 +4,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 <head>
 <title>UB Davis 3rd floor -- CSE 646</title>
+<link type="text/css" href="static/css/layout.css" rel="stylesheet" />	
 <script type="text/javascript"
     src="https://maps.google.com/maps/api/js?sensor=true">
 </script>
@@ -141,8 +142,25 @@ $$(document).ready(function(){
 <!--jQuery Ends-->
 
 </head>
-<body style="margin:10px; padding:10px;" onload="initialize()">
-  <div id="map_canvas" style="width:60%; height:90%"></div>
+
+
+
+<body style="margin:0px; padding:0px;" onload="initialize()">
+  <div id="wrapper">
+  <div id="container">
+	<div id="header">
+	<div id="top">
+	  <div class="logo"><p> Indoor Localization System (0.1 Alpha) </p></div>
+	  <div class="meta"><ul><li><a href="#" target="_blank" class="tooltip"><span class="ui-icon ui-icon-info"></span>About</a></li></ul></div>
+	</div>
+	<div id="navbar">      </div>
+	</div>
+	
+	<div id="content">
+		
+	
+  <div id="map_canvas" style="width:60%; height:80%"></div>
+  <div id="infoPanel">
   Opacity: 
   <a href="javascript:overlay.setOpacity(25)">25%</a> &nbsp; 
   <a href="javascript:overlay.setOpacity(50)">50%</a> &nbsp; 
@@ -154,6 +172,12 @@ $$(document).ready(function(){
 -->
   <p>The current Location <span id="newLocation">x</span></p>
   <span id="overlayToggle"></span>
+</div> <!-- end of Info Talbe -->
+</div>
+</div> <!--end of content -->
+</div>
+<div class="push"></div>
+  <div id="footer"><p class="mid">&copy; quake0day 2013. All rights reserved.</p></div>
 </body>
 
 </html>
