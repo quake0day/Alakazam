@@ -24,11 +24,12 @@ def query_one_loc(db):
     name = data[0]["Name"]
     lat = float(data[0]["lat"])
     lng = float(data[0]["lng"])
-    date =data[0]["date"]
+    date = data[0]["date"]
+    activity = data[0]["activity"]
     #print lat
     #print lng
     #print "[{lat:"+lat+",lng:"+lng+"}]"
-    return lat,lng,name,date
+    return lat,lng,name,date,activity
 
 
 # --- FOR TEST ONLY ---
