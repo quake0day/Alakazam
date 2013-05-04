@@ -10,6 +10,14 @@ urls=(
         '/submit','submit'
         )
 
+
+CONVERT_MATRIX = [[43.002486,-78.787595],
+[43.002684,-78.7877540],
+[43.0028552758727,-78.78761932253838],
+[43.002957276509164,-78.7876608967781],
+[43.00261694680236,-78.78770783543587],
+[43.00242863675962,-78.78764480352402]]
+
 class index:
     def GET(self):
         tmpl = web.template.render("tmpl/")
@@ -49,9 +57,10 @@ class wifi:
             returnMat = matrix_generate(bssid_list_len, bssid_list, data_mac_addr_n)
             labels = return_label(data_address_addr)
             #print returnMat
-            print classify0(returnMat[0], group, labels, 3) 
- 
-
+            x,y = classify0(returnMat[0], group, labels, 3) 
+            print x
+            print y
+            #insert_data(lat,lng,activity)
         return "Done"
 
 
