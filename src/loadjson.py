@@ -71,10 +71,10 @@ def return_label(data_address_addr):
 	return label
 
 
-def parse_new_json():
-	i = 42
-	#f = open('./test2.json')
-	f = open('./homewifi.json')
+def parse_new_json(i):
+	#i = 12
+	f = open('./test2.json')
+	#f = open('./homewifi.json')
 	data = json.load(f)
 	data_mac_addr_n = []
 	data_address_addr_n = []
