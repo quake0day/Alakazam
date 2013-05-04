@@ -1,6 +1,6 @@
 import json
 from numpy import *
-FILE = 'homewifi.json'
+FILE = 'homewifi2.json'
 f = open(FILE)
 data = json.load(f)
 
@@ -26,22 +26,27 @@ def generate_bssid_label(mac_addr_list):
 			#print BSSID['BSSID']
 	return list(frozenset(total_BSSID)), len(list(frozenset(total_BSSID)))
 
-
+# 
+def mother_list_gen(mac_addr_list):
+	bssid_list, bssid_list_len = generate_bssid_label(mac_addr_list)
+	return bssid_list_len, bssid_list
 
 # generate BSSID signal strength matrix for each AP
-def matrix_generate(mac_addr_list):
-	bssid_list, bssid_list_len = generate_bssid_label(mac_addr_list)
-	#print bssid_list, bssid_list_len
-	mac_addr_list_len = len(mac_addr_list)
-	returnMat = zeros((mac_addr_list_len, bssid_list_len))
+def matrix_generate(bssid_list_len, bssid_list, mac_addr_list_new):
 	#print returnMat
+	#print bssid_list, bssid_list_len
+	mac_addr_list_len = len(mac_addr_list_new)
+	returnMat = zeros((mac_addr_list_len, bssid_list_len))
 	i = 0
-	for mac_addr in mac_addr_list:
+	for mac_addr in mac_addr_list_new:
 		i = i + 1
 		for data in mac_addr:
 			#print data['BSSID'], data['level']
-			bssid_index = bssid_list.index(data['BSSID'])
-			returnMat[i - 1, bssid_index] =  data['level']
+			try:
+				bssid_index = bssid_list.index(data['BSSID'])
+				returnMat[i - 1, bssid_index] =  data['level']
+			except Exception :
+				pass
 	return returnMat
 
 # parse json and initial data
@@ -67,18 +72,22 @@ def return_label(data_address_addr):
 
 
 def parse_new_json():
-	i = 68
-	f = open('./test.json')
+	i = 42
+	#f = open('./test2.json')
+	f = open('./homewifi.json')
 	data = json.load(f)
-	data_mac_addr = []
-	data_address_addr = []
+	data_mac_addr_n = []
+	data_address_addr_n = []
+	data_mac_addr, data_address_addr = init_mac_addr()
 	for item in data['wifiInfos']:
 			#print item['point']
 			#print len(item['pointArray'])
-			data_mac_addr.append(item['pointArray'])
-			data_address_addr.append(item['point'])
-	print matrix_generate(data_mac_addr)[i], data_address_addr[i]
-	return matrix_generate(data_mac_addr)[i]
+			data_mac_addr_n.append(item['pointArray'])
+			data_address_addr_n.append(item['point'])
+	returnMat, bssid_list = mother_list_gen(data_mac_addr)
+	returnMat = matrix_generate(returnMat, bssid_list, data_mac_addr_n)
+	print returnMat[i], data_address_addr_n[i]
+	return returnMat[i]
 
 
 #matrix_and_label(data_mac_addr)
