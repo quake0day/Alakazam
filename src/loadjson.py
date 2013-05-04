@@ -4,11 +4,6 @@ FILE = 'homewifi2.json'
 f = open(FILE)
 data = json.load(f)
 
-
-
-	
-
-
 # return the maxium number of Wifi AP Mac addr in this environment
 def find_max_length(mac_addr_list):
 	addr_length_list = []
@@ -86,10 +81,10 @@ def parse_new_json(i):
 			data_address_addr_n.append(item['point'])
 	returnMat, bssid_list = mother_list_gen(data_mac_addr)
 	returnMat = matrix_generate(returnMat, bssid_list, data_mac_addr_n)
-	print returnMat[i], data_address_addr_n[i]
+	#print returnMat[i], data_address_addr_n[i]
 	return returnMat[i]
 
-
+parse_new_json(85)
 #matrix_and_label(data_mac_addr)
 
 #li, len = generate_bssid_label(data_mac_addr)
