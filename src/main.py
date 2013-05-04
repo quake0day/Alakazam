@@ -3,6 +3,7 @@ import query
 from knn import *
 import json
 from loadjson import *
+from insert_data import *
 urls = (
     '/', 'index',
     '/loc', 'loc',
@@ -12,7 +13,7 @@ urls = (
 
 
 
-CONVERT_MATRIX = [[43.002486,-78.787595],
+CONVERT_MATRIX = [[0,0],[43.002486,-78.787595],
 [43.002684,-78.7877540],
 [43.0028552758727,-78.78761932253838],
 [43.002957276509164,-78.7876608967781],
@@ -59,10 +60,13 @@ class wifi:
             labels = return_label(data_address_addr)
             #print returnMat
             print classify0(returnMat[0], group, labels, 3)
-            x,y = classify0(returnMat[0], group, labels, 3) 
-            print x
-            print y
-            #insert_data(lat,lng,activity)
+            cluster_val = classify0(returnMat[0], group, labels, 3)
+            y = cluster_val.split(',')[1]
+            real_loc = CONVERT_MATRIX[int(y)]
+            lat = real_loc[0]
+            lng = real_loc[1]
+            activity = "walking"
+            insert_data(lat, lng, activity)
         return "Done"
 
 
