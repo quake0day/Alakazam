@@ -13,8 +13,11 @@ class index:
 
     def POST(self):
         data = web.data()
-        print data.split(",")[0].split("=")[0]
-        print data.split(",")[0].split("=")[1].split("%2C")
+        if data.split(",")[0].split("=")[0] == "ACCELEROMETER":
+        #print data.split(",")[0].split("=")[0]
+            print "_________________"
+            print data.split(",")[0].split("=")[1].split("%2C")
+            print "_________________"
         return "HIHI"
 
 class loc:
