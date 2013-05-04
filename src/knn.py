@@ -29,7 +29,7 @@ def classify0(inX, dataSet, labels, k):
 	return sortedClassCount[0][0]
 
 
-
+"""
 group,labels = createDataSet()
 #print group,labels
 data_mac_addr, data_address_addr = init_mac_addr()
@@ -43,3 +43,4 @@ print labels
 for i in range(81,100):
 	print classify0(parse_new_json(i), group, labels, 3) 
 #
+"""
