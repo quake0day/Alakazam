@@ -39,5 +39,7 @@ group = matrix_generate(returnMat, bssid_list, data_mac_addr)
 labels = return_label(data_address_addr)
 print group
 print labels
-print parse_new_json()
-print classify0(parse_new_json(), group, labels, 3)
+#print parse_new_json()
+for i in range(81,100):
+	print classify0(parse_new_json(i), group, labels, 3) 
+#
