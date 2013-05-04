@@ -33,6 +33,11 @@ def classify0(inX, dataSet, labels, k):
 group,labels = createDataSet()
 #print group,labels
 data_mac_addr, data_address_addr = init_mac_addr()
-group = matrix_generate(data_mac_addr)
+returnMat, bssid_list = mother_list_gen(data_mac_addr)
+group = matrix_generate(returnMat, bssid_list, data_mac_addr)
+#group = matrix_generate(data_mac_addr)
 labels = return_label(data_address_addr)
-print classify0(group[66], group, labels, 3)
+print group
+print labels
+print parse_new_json()
+print classify0(parse_new_json(), group, labels, 3)
