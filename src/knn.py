@@ -1,5 +1,6 @@
 from numpy import *
 import operator
+from loadjson import *
 
 def createDataSet():
 	group = array([[1.0, 1.1], [1.0, 1.0], [0, 0], [0, 0.1]])
@@ -31,5 +32,7 @@ def classify0(inX, dataSet, labels, k):
 
 group,labels = createDataSet()
 #print group,labels
-
-print classify0([0,0], group, labels, 3)
+data_mac_addr, data_address_addr = init_mac_addr()
+group = matrix_generate(data_mac_addr)
+labels = return_label(data_address_addr)
+print classify0(group[66], group, labels, 3)
