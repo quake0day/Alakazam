@@ -23,7 +23,10 @@ def update_data(activity):
     data = list(posts.find().sort([ ('date', -1)]))
     print data
     pid = data[0]['_id']
-    posts.update({"_id": pid}, {'activity': activity} ) 
+    name = data[0]['Name']
+    lat = data[0]['lat']
+    lng = data[0]['lng']
+    posts.update({"_id": pid}, {'Name':name, 'lat':lat, 'lng':lng, 'date':datetime.datetime.utcnow(), 'activity': activity} ) 
     print "DONE"
 
     #posts.update()
