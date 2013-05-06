@@ -115,8 +115,10 @@ class sensor:
         print i.bearing
         print i.steplength
         print i.meana
-        print lat,lng
-        new_lat, new_lng = calDis(lat,lng,i.bearing,i.steplength)
+        print i.lat,i.lng
+        #new_lat, new_lng = calDis(lat,lng,i.bearing,i.steplength)
+        new_lat = i.lat
+        new_lng = i.lng
         print new_lat,new_lng
         if(float(i.meana) < 12):
             activity = "walking"
