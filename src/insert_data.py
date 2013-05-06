@@ -21,7 +21,7 @@ def update_data(activity):
     db = init_Mongo()
     posts = db.posts
     data = list(posts.find().sort([ ('date', -1)]))
-    print data
+    #print data
     pid = data[0]['_id']
     name = data[0]['Name']
     lat = data[0]['lat']
