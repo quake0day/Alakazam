@@ -13,12 +13,12 @@ urls = (
 
 
 
-CONVERT_MATRIX = [[0,0],[43.002486,-78.787595],
-[43.002684,-78.7877540],
+CONVERT_MATRIX = [[0,0], [43.002486,-78.787595], [43.002684,-78.7877540],
 [43.0028552758727,-78.78761932253838],
 [43.002957276509164,-78.7876608967781],
 [43.00261694680236,-78.78770783543587],
 [43.00242863675962,-78.78764480352402]]
+
 
 class index:
     def GET(self):
@@ -36,10 +36,12 @@ class index:
 
 
 class wifi:
+
     def GET(self):
         return "GET WIFI"
 
     def POST(self):
+
         i = web.input()
         data = None
         try:
@@ -59,14 +61,15 @@ class wifi:
             returnMat = matrix_generate(bssid_list_len, bssid_list, data_mac_addr_n)
             labels = return_label(data_address_addr)
             #print returnMat
-            print classify0(returnMat[0], group, labels, 3)
-            cluster_val = classify0(returnMat[0], group, labels, 3)
+            print classify0(returnMat[0], group, labels, 6)
+            cluster_val = classify0(returnMat[0], group, labels, 6)
             y = cluster_val.split(',')[1]
             real_loc = CONVERT_MATRIX[int(y)]
             lat = real_loc[0]
             lng = real_loc[1]
             activity = "walking"
             insert_data(lat, lng, activity)
+            
         return "Done"
 
 
