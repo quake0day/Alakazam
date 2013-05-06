@@ -1,6 +1,7 @@
 import json
 from numpy import *
 FILE = 'davis3rd2.json'
+#FILE = 'homewifi2.json'
 f = open(FILE)
 data = json.load(f)
 
