@@ -4,13 +4,17 @@ from knn import *
 import json
 from loadjson import *
 from insert_data import *
+from caldis import *
 urls = (
     '/', 'index',
     '/loc', 'loc',
     '/wifi', 'wifi',
+    '/sensor', 'sensor',
     '/submit', 'submit'
 )
 
+lat = 0
+lng = 0
 
 
 CONVERT_MATRIX = [[0,0],[43.002486,-78.787595],
@@ -20,6 +24,13 @@ CONVERT_MATRIX = [[0,0],[43.002486,-78.787595],
 [43.00261694680236,-78.78770783543587],
 [43.00242863675962,-78.78764480352402]]
 
+CONVERT_MATRIX2 = [[0,0],[43.002486,-78.787595],
+[43.002684,-78.7877540],
+[43.01596685375833,-78.8475090265274],
+[43.002957276509164,-78.7876608967781],
+[43.00261694680236,-78.78770783543587],
+[43.00242863675962,-78.78764480352402],
+[43.01596685375833,-78.8475090265274]]
 class index:
     def GET(self):
         tmpl = web.template.render("tmpl/")
@@ -62,7 +73,9 @@ class wifi:
             print classify0(returnMat[0], group, labels, 3)
             cluster_val = classify0(returnMat[0], group, labels, 3)
             y = cluster_val.split(',')[1]
-            real_loc = CONVERT_MATRIX[int(y)]
+            real_loc = CONVERT_MATRIX2[int(y)]
+            global lat
+            global lng
             lat = real_loc[0]
             lng = real_loc[1]
             activity = "walking"
@@ -80,6 +93,20 @@ class loc:
 
         print data
         return "This post:)"
+
+
+class sensor:
+    def POST(self):
+        i = web.input()
+        print ">>>>>>>>>>>>>>>>>>>>>>",
+        print i.bearing
+        print i.steplength
+        print lat,lng
+        new_lat, new_lng = calDis(lat,lng,i.bearing,i.steplength)
+        print new_lat,new_lng
+        activity = "walking"
+        insert_data(new_lat, new_lng, activity)
+        return "Done"
 
 
 class submit:
