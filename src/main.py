@@ -113,6 +113,9 @@ class sensor:
         i = web.input()
         print ">>>>>>>>>>>>>>>>>>>>>>",
         print i.bearing
+        f = open("temp.tmp",'w+')
+        f.write(i.bearing+","+i.lat+","+i.lng)
+        f.close()
         print i.steplength
         print i.meana
         print i.lat,i.lng
