@@ -93,7 +93,7 @@ class wifi:
             activity = "standing"
             insert_data(lat, lng, activity)
             
-        return "Done"
+        return lat,lng
 
 
 class loc:
