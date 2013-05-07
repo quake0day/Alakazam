@@ -104,8 +104,14 @@
 	
    	// Each time a new location is registered, move the marker.
    	//myLocation = new google.maps.LatLng(newPosition.coords.latitude,newPosition.coords.longitude);
-	
+	  
     marker.setPosition(newPosition);
+    new_marker = new google.maps.Marker({
+        position: newPosition,
+        map: map,
+        title:"Here"
+    });
+
     if (loops > 0)
     {
   	route = setTimeout("movemarker()", delay);
