@@ -10,10 +10,10 @@ def init_Mongo():
     #posts = db.posts
     return db
 
-def insert_data(lat,lng,activity):
+def insert_data(lat,lng,activity,flag):
     db = init_Mongo()
     posts = db.posts
-    post = {"Name":"piers","lat":lat,"lng":lng,"date":datetime.datetime.utcnow(),"activity":activity}
+    post = {"Name":"piers","lat":lat,"lng":lng,"date":datetime.datetime.utcnow(),"activity":activity,"flag":flag}
     posts.insert(post)
     return True
 
@@ -26,7 +26,8 @@ def update_data(activity):
     name = data[0]['Name']
     lat = data[0]['lat']
     lng = data[0]['lng']
-    posts.update({"_id": pid}, {'Name':name, 'lat':lat, 'lng':lng, 'date':datetime.datetime.utcnow(), 'activity': activity} ) 
+    flag = data[0]['flag']
+    posts.update({"_id": pid}, {'Name':name, 'lat':lat, 'lng':lng, 'date':datetime.datetime.utcnow(), 'activity': activity, 'flag':flag} ) 
     print "DONE"
 
     #posts.update()

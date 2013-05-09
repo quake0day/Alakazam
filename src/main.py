@@ -91,7 +91,8 @@ class wifi:
             lat = real_loc[0]
             lng = real_loc[1]
             activity = "standing"
-            insert_data(lat, lng, activity)
+            flag = 0
+            insert_data(lat, lng, activity, flag)
             
         return lat,lng
 
@@ -113,9 +114,6 @@ class sensor:
         i = web.input()
         print ">>>>>>>>>>>>>>>>>>>>>>",
         print i.bearing
-        f = open("temp.tmp",'w+')
-        f.write(i.bearing+","+i.lat+","+i.lng)
-        f.close()
         print i.steplength
         print i.meana
         print i.lat,i.lng
@@ -127,7 +125,8 @@ class sensor:
             activity = "walking"
         elif(float(i.meana) >= 12):
             activity = "running"
-        insert_data(new_lat, new_lng, activity)
+        flag = 1
+        insert_data(new_lat, new_lng, activity, flag)
         return "Done"
 
 

@@ -29,10 +29,11 @@ def query_one_loc(db):
     #print lng
     #print "[{lat:"+lat+",lng:"+lng+"}]"
     activity = data[0]["activity"]
+    flag = data[0]['flag']
     #print lat
     #print lng
     #print "[{lat:"+lat+",lng:"+lng+"}]"
-    return lat, lng, name, date, activity
+    return lat, lng, name, date, activity,flag
 
 
 # --- FOR TEST ONLY ---
