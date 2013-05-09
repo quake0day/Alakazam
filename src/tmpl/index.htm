@@ -127,6 +127,7 @@
   };
 
 
+    if(flag == 0){
     new_marker = new google.maps.Marker({
         position: newPosition,
         map: map,
@@ -135,6 +136,13 @@
         shape: shape,
         title:"Here"
     });
+  }else{
+        new_marker = new google.maps.Marker({
+        position: newPosition,
+        map: map,
+        title:"Here"
+    });
+  }
 
     if (loops > 0)
     {
