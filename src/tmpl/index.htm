@@ -148,7 +148,9 @@ $$(document).ready(function(){
 		  // a little hack here :(
 		  // To delte the "(" from the result
 		  data = [{lat:loc[0].split("(")[1],lng:loc[1]}];
+      flag = loc[11];
 		  //data = newLocation;
+      $$('#flag').html(flag);
 		  $$('#activity').html(loc[10].split("u'")[1].split("')")[0]);
 		  
 	  });
@@ -192,6 +194,7 @@ $$(document).ready(function(){
 -->
   <p>The current Location <span id="newLocation">UNKNOWN</span></p>
   <p>The current activity <span id="activity">UNKNOWN</span></p>
+  <p>The current activity <span id="flag">UNKNOWN</span></p>
   <span id="latspan">lat</span>
   <span id="lngspan">lng</span>
   <span id="latlng">lng</span>
