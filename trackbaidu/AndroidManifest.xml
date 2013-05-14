@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.trackbaidu"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+    <uses-feature android:name="android.hardware.sensor.accelerometer"
+        android:required="true"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" 
+        android:name=".SharedValue">
+        <activity
+            android:name="com.example.trackbaidu.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+         <activity android:name=".GMapActivity" android:screenOrientation="portrait"/>
+        <service android:name=".GPSService" ></service>
+        <service android:name=".PostGeoData" ></service>
+        <service android:name=".PostWifiData" ></service>
+        <service android:name=".PostStepDetectionService" ></service>
+        <service android:name="com.baidu.location.f" android:enabled="true"
+			android:process=":remote">
+	<!--  		<intent-filter>
+				<action android:name="com.baidu.location.service_v2.9"></action>
+			</intent-filter>-->
+		</service>
+		
+        <receiver android:name=".BootBroadcast" android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".Alarmreceiver"><intent-filter>
+            <action android:name="trackbaidu.action"></action>
+            <action android:name="postserver.action"></action>
+        </intent-filter></receiver>
+        <activity android:name="com.example.trackbaidu.AppPreferences" android:label="Preferences"></activity>
+   <uses-library android:name="com.google.android.maps" />
+   <meta-data
+    android:name="com.google.android.maps.v2.API_KEY"
+    android:value="AIzaSyBUC1vEc0BTgJQjV6H93l396rOpVPx6u68"/>
+        </application>
+        <application android:name=".TrackingValue" 
+       android:label="@string/app_name">   </application>
+   
+    	<permission
+        android:name="com.example.trackbaidu.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature"/>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"></uses-permission>
+	<uses-permission android:name="android.permission.READ_LOGS"></uses-permission>
+	<uses-permission android:name="android.permission.VIBRATE"></uses-permission>
+	<uses-permission android:name="android.permission.WRITE_SETTINGS"></uses-permission> 
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	
+
+<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+<!-- The following two permissions are not required to use
+     Google Maps Android API v2, but are recommended. -->
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+<uses-permission android:name="com.example.trackbaidu.permission.MAPS_RECEIVE"/>
+
+ <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true"/>
+</manifest>
